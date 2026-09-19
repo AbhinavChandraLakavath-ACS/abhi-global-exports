@@ -33,9 +33,6 @@ export default function Footer() {
           {/* Brand Info */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4 group">
-              <div className="bg-brand-primary p-1.5 rounded-lg">
-                <Flame className="h-5 w-5 text-brand-accent fill-brand-accent" />
-              </div>
               <span className="font-extrabold text-lg tracking-wider text-white">
                 ABHI <span className="text-brand-accent font-light">GLOBAL EXPORTS</span>
               </span>
@@ -155,12 +152,12 @@ export default function Footer() {
             <div className="flex flex-col gap-2.5 text-xs text-gray-400">
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-brand-primary shrink-0 mt-0.5" />
-                <span>GT Road, Guntur, Andhra Pradesh, 522001, India</span>
+                <span>Abhinav Spices Kothagudem, Telangana, India</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-brand-primary shrink-0" />
-                <a href="mailto:export@abhiglobalexports.com" className="hover:text-brand-accent">
-                  export@abhiglobalexports.com
+                <a href="mailto:Abhinav.spices@ipmchillies.com" className="hover:text-brand-accent">
+                  Abhinav.spices@ipmchillies.com
                 </a>
               </div>
               <div className="flex items-center gap-2">

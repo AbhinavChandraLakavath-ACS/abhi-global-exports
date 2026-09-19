@@ -4,9 +4,7 @@ import React from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
-import Chatbot from '@/components/chatbot/Chatbot';
 import InquiryForm from '@/components/shared/InquiryForm';
-import ExportRouteMap from '@/components/shared/ExportRouteMap';
 import { chillies, categories } from '@/data/chillies';
 import { useLanguage } from '@/context/LanguageContext';
 import { useCurrency } from '@/context/CurrencyContext';
@@ -257,13 +255,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Interactive Global Trade Route Map Section */}
-      <section className="py-16 bg-brand-bg/40 dark:bg-brand-dark/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ExportRouteMap />
-        </div>
-      </section>
-
       {/* RFQ Submission form */}
       <section className="py-20 bg-white dark:bg-brand-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -273,7 +264,6 @@ export default function Home() {
 
       <Footer />
       <WhatsAppButton />
-      <Chatbot />
     </>
   );
 }

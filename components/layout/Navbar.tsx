@@ -123,9 +123,6 @@ export default function Navbar() {
             
             {/* Single Clean Brand Logo */}
             <Link href="/" className="flex items-center gap-2.5 group shrink-0 mr-8">
-              <div className="bg-brand-primary p-2 rounded-xl group-hover:scale-105 transition-transform duration-300 shadow-md shadow-brand-primary/20">
-                <Flame className="h-5 w-5 text-brand-accent fill-brand-accent animate-pulse" />
-              </div>
               <div className="flex flex-col">
                 <span className="font-black text-lg sm:text-xl tracking-wider text-brand-primary dark:text-white uppercase leading-none">
                   ABHI <span className="text-brand-accent font-light ml-1">GLOBAL EXPORTS</span>
