@@ -5,8 +5,6 @@ import { useParams, useRouter } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
-import ContainerCalculator from '@/components/calculator/ContainerCalculator';
-import ShippingEstimator from '@/components/calculator/ShippingEstimator';
 import SamplePurchaseWidget from '@/components/shared/SamplePurchaseWidget';
 import { chillies, ChilliProduct } from '@/data/chillies';
 import { useLanguage } from '@/context/LanguageContext';
@@ -79,7 +77,7 @@ export default function ProductDetails() {
       />
 
       <Navbar />
-      <main className="flex-grow pt-32 pb-16 bg-brand-bg dark:bg-brand-dark/40 min-h-screen">
+      <main className="flex-grow pt-24 pb-8 bg-brand-bg dark:bg-brand-dark/40 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumbs */}
@@ -92,7 +90,7 @@ export default function ProductDetails() {
           </nav>
 
           {/* Core Intro Card */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
             
             {/* Visuals Column (Solo & Bulk Switcher) */}
             <div className="lg:col-span-5 bg-white dark:bg-brand-dark border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between items-center text-center">
@@ -261,7 +259,7 @@ export default function ProductDetails() {
           </div>
 
           {/* Details Specifications Tabs */}
-          <div className="bg-white dark:bg-brand-dark border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden mb-12">
+          <div className="bg-white dark:bg-brand-dark border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden mb-6">
             <div className="flex border-b border-gray-100 dark:border-gray-800 bg-brand-bg/30 overflow-x-auto whitespace-nowrap custom-scrollbar">
               {[
                 { id: 'specs', label: 'Technical Specifications' },
@@ -332,16 +330,7 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          {/* Interactive Calculator Section */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-black text-brand-text dark:text-white mb-6">
-              Estimate Packing & Freight for {product.name}
-            </h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <ContainerCalculator />
-              <ShippingEstimator />
-            </div>
-          </div>
+
 
           {/* Sample Purchase Section (1 kg Quality Inspection Kit) */}
           <SamplePurchaseWidget product={product} />

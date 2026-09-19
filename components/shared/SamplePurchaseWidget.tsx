@@ -116,8 +116,8 @@ export default function SamplePurchaseWidget({ product }: SamplePurchaseWidgetPr
   };
 
   return (
-    <section id="sample-purchase-section" className="mt-12 mb-16 scroll-mt-28">
-      <div className="bg-white dark:bg-brand-dark border-2 border-brand-primary/20 dark:border-brand-primary/40 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl relative overflow-hidden">
+    <section id="sample-purchase-section" className="mt-6 mb-8 scroll-mt-28">
+      <div className="bg-white dark:bg-brand-dark border-2 border-brand-primary/20 dark:border-brand-primary/40 rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl relative overflow-hidden">
         
         {/* Subtle accent bar */}
         <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary" />

@@ -169,12 +169,7 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link 
-              href="/calculator"
-              className="bg-brand-dark dark:bg-brand-dark/90 text-brand-accent hover:text-white font-extrabold text-xs py-3 px-6 rounded-xl border border-brand-primary/40 flex items-center justify-center gap-2 shadow-lg"
-            >
-              <span>Launch Freight Calculator</span>
-            </Link>
+
 
             <button 
               onClick={() => setIsSubmitted(false)}

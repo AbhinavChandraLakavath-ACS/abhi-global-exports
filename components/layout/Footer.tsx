@@ -87,11 +87,7 @@ export default function Footer() {
                   {t('nav.certifications')}
                 </Link>
               </li>
-              <li>
-                <Link href="/calculator" className="hover:text-brand-accent hover:translate-x-1 transition-all duration-200 inline-block">
-                  {t('nav.calculator')}
-                </Link>
-              </li>
+
             </ul>
           </div>
 

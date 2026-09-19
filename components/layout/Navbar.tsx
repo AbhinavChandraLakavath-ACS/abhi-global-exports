@@ -362,34 +362,7 @@ export default function Navbar() {
                           </div>
                         )}
 
-                        <div className="pt-2 border-t border-gray-100 dark:border-gray-800 space-y-1">
-                          <Link 
-                            href="/dashboard/buyer"
-                            onClick={() => setIsProfileOpen(false)}
-                            className="flex items-center justify-between p-2 hover:bg-brand-bg dark:hover:bg-brand-dark/50 rounded-lg text-brand-text dark:text-white font-bold"
-                          >
-                            <span className="flex items-center gap-2"><FileText className="h-4 w-4 text-brand-primary" /> My RFQs & Active Quotes</span>
-                            <ChevronDown className="h-3.5 w-3.5 -rotate-90 text-gray-400" />
-                          </Link>
 
-                          <Link 
-                            href="/dashboard/buyer"
-                            onClick={() => setIsProfileOpen(false)}
-                            className="flex items-center justify-between p-2 hover:bg-brand-bg dark:hover:bg-brand-dark/50 rounded-lg text-brand-text dark:text-white font-bold"
-                          >
-                            <span className="flex items-center gap-2"><Package className="h-4 w-4 text-amber-500" /> My Free Sample Requests</span>
-                            <ChevronDown className="h-3.5 w-3.5 -rotate-90 text-gray-400" />
-                          </Link>
-
-                          <Link 
-                            href="/calculator"
-                            onClick={() => setIsProfileOpen(false)}
-                            className="flex items-center justify-between p-2 hover:bg-brand-bg dark:hover:bg-brand-dark/50 rounded-lg text-brand-text dark:text-white font-bold"
-                          >
-                            <span className="flex items-center gap-2"><Scale className="h-4 w-4 text-blue-500" /> Container & Stuffing Calculator</span>
-                            <ChevronDown className="h-3.5 w-3.5 -rotate-90 text-gray-400" />
-                          </Link>
-                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -576,29 +549,9 @@ export default function Navbar() {
                 <Globe className="h-4 w-4 shrink-0 text-brand-primary" /> Export Destinations
               </Link>
 
-              <Link 
-                href="/calculator"
-                onClick={() => setIsOpen(false)}
-                className="font-bold py-2 border-b border-gray-100 dark:border-gray-800 text-brand-text/80 dark:text-brand-bg/85 flex items-center gap-2"
-              >
-                <Package className="h-4 w-4 shrink-0 text-brand-primary" /> Container & Freight Calculator
-              </Link>
 
-              <Link 
-                href="/dashboard/buyer"
-                onClick={() => setIsOpen(false)}
-                className="font-bold py-2 border-b border-gray-100 dark:border-gray-800 text-brand-text/80 dark:text-brand-bg/85"
-              >
-                Buyer Dashboard
-              </Link>
 
-              <Link 
-                href="/dashboard/admin"
-                onClick={() => setIsOpen(false)}
-                className="font-bold py-2 border-b border-gray-100 dark:border-gray-800 text-brand-text/80 dark:text-brand-bg/85"
-              >
-                Admin Dashboard
-              </Link>
+
 
               {/* Action Quote Button */}
               <Link 
