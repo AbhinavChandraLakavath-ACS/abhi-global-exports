@@ -25,14 +25,14 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-32 overflow-hidden bg-gradient-to-br from-brand-dark via-[#180505] to-brand-dark text-white">
+      <section className="relative min-h-[75vh] flex items-center justify-center pt-24 overflow-hidden bg-gradient-to-br from-brand-dark via-[#180505] to-brand-dark text-white">
         {/* Animated background decoration */}
         <div className="absolute inset-0 opacity-15 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-brand-primary rounded-full filter blur-[120px] animate-pulse" />
           <div className="absolute bottom-20 -left-20 w-80 h-80 bg-brand-accent rounded-full filter blur-[100px] animate-pulse" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6 max-w-4xl py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6 max-w-4xl py-6">
           {/* Badge */}
           <div className="inline-flex gap-2.5 bg-white/5 border border-white/10 px-4.5 py-1.5 rounded-full text-xs font-bold text-brand-accent uppercase tracking-widest">
             <Flame className="h-4.5 w-4.5 text-brand-accent fill-brand-accent animate-bounce" />
@@ -76,9 +76,9 @@ export default function Home() {
       </section>
 
       {/* Categories Grid Section */}
-      <section className="py-20 bg-brand-bg dark:bg-brand-dark/40">
+      <section className="py-8 lg:py-10 bg-brand-bg dark:bg-brand-dark/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center max-w-2xl mx-auto">
+          <div className="mb-6 text-center max-w-2xl mx-auto">
             <span className="text-brand-primary font-black uppercase tracking-widest text-xs block mb-2">Product Divisions</span>
             <h2 className="text-3xl font-black text-brand-text dark:text-white">
               Export Category Forms
@@ -123,9 +123,9 @@ export default function Home() {
       </section>
 
       {/* Popular Chilli Grid Section */}
-      <section className="py-20 bg-white dark:bg-brand-dark">
+      <section className="py-8 lg:py-10 bg-white dark:bg-brand-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+          <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
             <div>
               <span className="text-brand-primary font-black uppercase tracking-widest text-xs block mb-2">Featured Products</span>
               <h2 className="text-3xl font-black text-brand-text dark:text-white">
@@ -190,9 +190,9 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us & Stats */}
-      <section className="py-20 bg-brand-bg dark:bg-brand-dark/40">
+      <section className="py-8 lg:py-10 bg-brand-bg dark:bg-brand-dark/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
             {/* Why Choose Us */}
             <div className="lg:col-span-7 space-y-6">
@@ -256,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* RFQ Submission form */}
-      <section className="py-20 bg-white dark:bg-brand-dark">
+      <section className="py-8 lg:py-10 bg-white dark:bg-brand-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <InquiryForm />
         </div>

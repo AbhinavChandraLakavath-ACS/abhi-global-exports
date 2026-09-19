@@ -27,9 +27,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-brand-dark text-white border-t border-gray-800 pt-16 pb-8">
+    <footer className="bg-brand-dark text-white border-t border-gray-800 pt-8 pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Info */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4 group">
@@ -171,7 +171,7 @@ export default function Footer() {
         </div>
 
         {/* Lower footer copyright */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-gray-500">
+        <div className="border-t border-gray-800 pt-4 flex flex-col sm:flex-row justify-between items-center text-[11px] text-gray-500">
           <p>© {new Date().getFullYear()} {t('footer.rights')}</p>
           <div className="flex gap-4 mt-4 sm:mt-0">
             <a href="#" className="hover:text-white">Privacy Policy</a>
