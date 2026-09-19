@@ -222,7 +222,7 @@ export default function ProductDetails() {
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link 
-                    href="/#rfq-section"
+                    href={`/?quote=${product.id}#rfq-section`}
                     className="bg-brand-primary hover:bg-brand-secondary text-white font-extrabold px-6 py-3.5 rounded-xl text-center text-sm flex-1 shadow-md shadow-brand-primary/10"
                   >
                     Request B2B Price Quote

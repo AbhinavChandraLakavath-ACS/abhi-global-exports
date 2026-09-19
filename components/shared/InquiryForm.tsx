@@ -63,9 +63,29 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  // Verification States
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
+  const [showVerifyModal, setShowVerifyModal] = useState<'email' | 'phone' | null>(null);
+  const [verificationCode, setVerificationCode] = useState('');
 
   useEffect(() => {
-    const defaultProduct = preselectedChilli || chillies[0].name;
+    let defaultProduct = preselectedChilli;
+    
+    if (typeof window !== 'undefined' && !defaultProduct) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const quoteParam = urlParams.get('quote');
+      if (quoteParam) {
+        const chilli = chillies.find(c => c.id === quoteParam || c.slug === quoteParam);
+        if (chilli) defaultProduct = chilli.name;
+      }
+    }
+    
+    if (!defaultProduct) {
+      defaultProduct = chillies[0].name;
+    }
+    
     setSelectedProducts({ [defaultProduct]: true });
     setQuantities({ [defaultProduct]: 10 });
   }, [preselectedChilli]);
@@ -96,6 +116,11 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
     const activeProducts = Object.keys(selectedProducts).filter(k => selectedProducts[k]);
     if (!name || !email || !company || activeProducts.length === 0) {
       alert('Please fill out all required fields and select at least one product.');
+      return;
+    }
+
+    if (!isEmailVerified && !isPhoneVerified) {
+      alert('Please verify either your Email or Phone Number to proceed. This ensures security and trust.');
       return;
     }
 
@@ -142,6 +167,23 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
     setEmail('');
     setPhone('');
     setMessage('');
+    setIsEmailVerified(false);
+    setIsPhoneVerified(false);
+  };
+
+  const handleVerifyCode = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (verificationCode.length < 4) {
+      alert("Please enter a valid 4-digit code (e.g. 1234)");
+      return;
+    }
+    if (showVerifyModal === 'email') {
+      setIsEmailVerified(true);
+    } else {
+      setIsPhoneVerified(true);
+    }
+    setShowVerifyModal(null);
+    setVerificationCode('');
   };
 
   return (
@@ -224,30 +266,45 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-[10px] font-bold uppercase tracking-wider text-brand-text/70 dark:text-brand-bg/70 block mb-1">
-                {t('rfq.email')} *
+              <label className="text-[10px] font-bold uppercase tracking-wider text-brand-text/70 dark:text-brand-bg/70 flex justify-between mb-1">
+                <span>{t('rfq.email')} *</span>
+                {isEmailVerified ? (
+                  <span className="text-green-600 dark:text-green-400 font-extrabold flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Verified</span>
+                ) : email.length > 3 ? (
+                  <button type="button" onClick={() => setShowVerifyModal('email')} className="text-brand-primary hover:underline font-extrabold flex items-center gap-1">Verify Email</button>
+                ) : null}
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input 
                   type="email" 
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-brand-bg dark:bg-brand-dark/60 pl-9 pr-3 py-2.5 border border-gray-200 dark:border-gray-800 rounded-xl focus:outline-none focus:border-brand-primary text-brand-text dark:text-white"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (isEmailVerified) setIsEmailVerified(false);
+                  }}
+                  disabled={isEmailVerified}
+                  className={`w-full bg-brand-bg dark:bg-brand-dark/60 pl-9 pr-3 py-2.5 border rounded-xl focus:outline-none focus:border-brand-primary text-brand-text dark:text-white ${isEmailVerified ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'border-gray-200 dark:border-gray-800'}`}
                   placeholder="buyer@company.com"
                   required
                 />
               </div>
             </div>
             <div>
-              <label className="text-[10px] font-bold uppercase tracking-wider text-brand-text/70 dark:text-brand-bg/70 block mb-1">
-                WhatsApp / {t('rfq.phone')}
+              <label className="text-[10px] font-bold uppercase tracking-wider text-brand-text/70 dark:text-brand-bg/70 flex justify-between mb-1">
+                <span>WhatsApp / {t('rfq.phone')}</span>
+                {isPhoneVerified ? (
+                  <span className="text-green-600 dark:text-green-400 font-extrabold flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> Verified</span>
+                ) : phone.length > 5 ? (
+                  <button type="button" onClick={() => setShowVerifyModal('phone')} className="text-brand-primary hover:underline font-extrabold flex items-center gap-1">Verify Phone</button>
+                ) : null}
               </label>
               <div className="flex gap-2">
                 <select 
                   value={phoneCode}
                   onChange={(e) => setPhoneCode(e.target.value)}
-                  className="w-1/3 bg-brand-bg dark:bg-brand-dark/60 border border-gray-200 dark:border-gray-800 rounded-xl px-2 py-2.5 focus:outline-none text-brand-text dark:text-white font-bold"
+                  disabled={isPhoneVerified}
+                  className={`w-1/3 border rounded-xl px-2 py-2.5 focus:outline-none text-brand-text dark:text-white font-bold ${isPhoneVerified ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'bg-brand-bg dark:bg-brand-dark/60 border-gray-200 dark:border-gray-800'}`}
                 >
                   {PHONE_CODES.map(pc => (
                     <option key={pc.code} value={pc.code}>{pc.label}</option>
@@ -258,8 +315,12 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
                   <input 
                     type="tel" 
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-brand-bg dark:bg-brand-dark/60 pl-9 pr-3 py-2.5 border border-gray-200 dark:border-gray-800 rounded-xl focus:outline-none focus:border-brand-primary text-brand-text dark:text-white"
+                    onChange={(e) => {
+                      setPhone(e.target.value);
+                      if (isPhoneVerified) setIsPhoneVerified(false);
+                    }}
+                    disabled={isPhoneVerified}
+                    className={`w-full pl-9 pr-3 py-2.5 border rounded-xl focus:outline-none focus:border-brand-primary text-brand-text dark:text-white ${isPhoneVerified ? 'border-green-500 bg-green-50 dark:bg-green-900/20' : 'bg-brand-bg dark:bg-brand-dark/60 border-gray-200 dark:border-gray-800'}`}
                     placeholder="Mobile Number"
                   />
                 </div>
@@ -381,6 +442,52 @@ export default function InquiryForm({ preselectedChilli }: { preselectedChilli?:
             {isSubmitting ? 'Dispatching Notifications...' : t('rfq.submit')} <Send className="h-4 w-4" />
           </button>
         </form>
+      )}
+      {/* Verification Modal */}
+      {showVerifyModal && (
+        <div className="fixed inset-0 z-50 bg-brand-dark/90 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-brand-dark rounded-3xl border border-gray-100 dark:border-gray-800 shadow-2xl p-6 sm:p-8 max-w-sm w-full relative">
+            <button 
+              onClick={() => setShowVerifyModal(null)}
+              className="absolute top-5 right-5 text-gray-400 hover:text-brand-primary"
+            >
+              ×
+            </button>
+            <div className="text-center mb-6">
+              <div className="w-12 h-12 bg-brand-primary/10 text-brand-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                <CheckCircle2 className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-black text-brand-text dark:text-white">Verify {showVerifyModal === 'email' ? 'Email' : 'Phone'}</h3>
+              <p className="text-xs text-brand-text/60 dark:text-brand-bg/60 mt-1">
+                A verification code has been sent to your {showVerifyModal === 'email' ? 'email address' : 'mobile number'}.
+              </p>
+            </div>
+            <form onSubmit={handleVerifyCode} className="space-y-4">
+              <div>
+                <input 
+                  type="text"
+                  maxLength={4}
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value.replace(/\D/g, ''))}
+                  className="w-full text-center text-2xl tracking-[0.5em] bg-brand-bg dark:bg-brand-dark/60 py-3 border border-gray-200 dark:border-gray-800 rounded-xl focus:outline-none focus:border-brand-primary font-bold text-brand-text dark:text-white"
+                  placeholder="0000"
+                  required
+                />
+              </div>
+              <button 
+                type="submit"
+                className="w-full bg-brand-primary hover:bg-brand-secondary text-white font-extrabold py-3 rounded-xl uppercase tracking-wider text-xs"
+              >
+                Verify Now
+              </button>
+              <div className="text-center">
+                <button type="button" className="text-[10px] text-brand-text/50 font-bold hover:text-brand-primary">
+                  Resend Code
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

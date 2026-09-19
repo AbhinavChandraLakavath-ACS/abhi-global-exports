@@ -365,7 +365,7 @@ function ProductCatalogContent() {
                             </div>
 
                             <a 
-                              href="/#rfq-section" 
+                              href={`/?quote=${product.id}#rfq-section`} 
                               className="text-center block text-[11px] font-bold text-brand-primary hover:text-brand-secondary py-1 dark:text-brand-accent"
                             >
                               Request Price Quote
