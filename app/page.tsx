@@ -42,7 +42,7 @@ export default function Home() {
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
             {t('hero.title')}
           </h1>
 
@@ -52,7 +52,7 @@ export default function Home() {
           </p>
 
           {/* Core Stats / Badges */}
-          <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto py-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto py-6">
             {[
               { label: t('hero.badge1'), desc: 'Spices Database' },
               { label: t('hero.badge2'), desc: 'Global Markets' },

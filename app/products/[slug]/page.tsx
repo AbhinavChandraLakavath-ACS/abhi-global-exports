@@ -262,7 +262,7 @@ export default function ProductDetails() {
 
           {/* Details Specifications Tabs */}
           <div className="bg-white dark:bg-brand-dark border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm overflow-hidden mb-12">
-            <div className="flex border-b border-gray-100 dark:border-gray-800 bg-brand-bg/30">
+            <div className="flex border-b border-gray-100 dark:border-gray-800 bg-brand-bg/30 overflow-x-auto whitespace-nowrap custom-scrollbar">
               {[
                 { id: 'specs', label: 'Technical Specifications' },
                 { id: 'applications', label: 'Applications & Culinary Uses' },
